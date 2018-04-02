@@ -203,6 +203,13 @@ define([
         this.element.focusout(
             function() { that.auto_highlight(); }
         );
+
+        this.events.on('kernel_restarting.Kernel', function() {
+            console.log('KERNEL HAS RESTARTED');
+            if (this.input_prompt_number === '*') {
+              this.set_input_prompt('');
+            }
+        });
     };
 
 
